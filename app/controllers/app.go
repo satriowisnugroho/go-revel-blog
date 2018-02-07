@@ -21,3 +21,16 @@ func (c App) Hello() revel.Result {
 
 	return c.RenderJSON(data)
 }
+
+func (c App) Words() revel.Result {
+	a := c.Params.Route.Get("a")
+	b := c.Params.Route.Get("b")
+
+	res := make(map[string]interface{})
+	res["code"] = 200
+	res["status"] = true
+	res["message"] = "Success"
+	res["data"] = a + " " + b
+
+	return c.RenderJSON(res)
+}
